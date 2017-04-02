@@ -3,31 +3,6 @@
 # sudo (or later)
 # By Emmanuel Rouat [no-email]
 #
-# Last modified: Tue Nov 20 22:04:47 CET 2012
-
-#  This file is normally read by interactive shells only.
-#+ Here is the place to define your aliases, functions and
-#+ other interactive features like your prompt.
-#
-#  The majority of the code here assumes you are on a GNU
-#+ system (most likely a Linux box) and is often based on code
-#+ found on Usenet or Internet.
-#
-#  See for instance:
-#  http://tldp.org/LDP/abs/html/index.html
-#  http://www.caliban.org/bash
-#  http://www.shelldorado.com/scripts/categories.html
-#  http://www.dotfiles.org
-#
-#  The choice of colors was done for a shell with a dark background
-#+ (white on black), and this is usually also suited for pure text-mode
-#+ consoles (no X server available). If you use a white background,
-#+ you'll have to do some other choices for readability.
-#
-#  This bashrc file is a bit overcrowded.
-#  Remember, it is just just an example.
-#  Tailor it to your needs.
-#
 # =============================================================== #
 
 # --> Comments added by HOWTO author.
@@ -957,14 +932,14 @@ UPTIME=`printf "%d days, %02dh%02dm%02ds" "$days" "$hours" "$mins" "$secs"`
 read one five fifteen rest < /proc/loadavg
 
 echo "$(tput setaf 2)
-   .~~.   .~~.    `date +"%A, %e %B %Y, %X %Z"`
-  '. \ ' ' / .'   `uname -srmo`$(tput setaf 1)
-   .~ .~~~..~.    
-  : .~.'~'.~. :   Uptime.............: ${UPTIME}
- ~ (   ) (   ) ~  Memory.............: `cat /proc/meminfo | grep MemFree | awk {'print $2'}`kB (Free) / `cat /proc/meminfo | grep MemTotal | awk {'print $2'}`kB (Total)
-( : '~'.~.'~' : ) Load Averages......: ${one}, ${five}, ${fifteen} (1, 5, 15 min)
- ~ .~ (   ) ~. ~  Running Processes..: `ps ax | wc -l | tr -d " "`
-  (  : '~' :  )   CPU Temperature....: `/opt/vc/bin/vcgencmd measure_temp | cut -c 6-9 | awk '{ print $1 "°C" }'`
-   '~ .~~~. ~'    Free Disk Space....: `df -Ph | grep -E '^/dev/root' | awk '{ print $4 " of " $2 }'`
-       '~'        IP Addresses.......: `/sbin/ifconfig eth0 | /bin/grep "inet addr" | /usr/bin/cut -d ":" -f 2 | /usr/bin/cut -d " " -f 1` and `wget -q -O - http://icanhazip.com/ | tail`
+`date +"%A, %e %B %Y, %X %Z"`
+`uname -srmo`$(tput setaf 1)
+
+Uptime.............: ${UPTIME}
+Memory.............: `cat /proc/meminfo | grep MemFree | awk {'print $2'}`kB (Free) / `cat /proc/meminfo | grep MemTotal | awk {'print $2'}`kB (Total)
+Load Averages......: ${one}, ${five}, ${fifteen} (1, 5, 15 min)
+Running Processes..: `ps ax | wc -l | tr -d " "`
+CPU Temperature....: `/opt/vc/bin/vcgencmd measure_temp | cut -c 6-9 | awk '{ print $1 "°C" }'`
+Free Disk Space....: `df -Ph | grep -E '^/dev/root' | awk '{ print $4 " of " $2 }'`
+IP Addresses.......: `/sbin/ifconfig eth0 | /bin/grep "inet addr" | /usr/bin/cut -d ":" -f 2 | /usr/bin/cut -d " " -f 1` and `wget -q -O - http://icanhazip.com/ | tail`
 $(tput sgr0)"
